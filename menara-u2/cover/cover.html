@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<title>Menara U2 Cover</title>
+<style>
+  @font-face { font-family: "League Gothic"; src: url("fonts/league-gothic.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("fonts/montserrat.woff2") format("woff2"); font-weight: 100 900; }
+  :root { --emerald: #0B3029; --gold: #E3B866; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--emerald); }
+  body { position: relative; font-family: "Montserrat", sans-serif; color: #fff; }
+
+  #bg { position: absolute; inset: 0; background: url("img/view.jpg") center 70% / cover no-repeat; }
+  #shade-t { position: absolute; left: 0; right: 0; top: 0; height: 1050px;
+    background: linear-gradient(to bottom, rgba(6,26,22,.82) 0%, rgba(6,26,22,.6) 50%, rgba(6,26,22,0) 100%); }
+  #shade-b { position: absolute; left: 0; right: 0; bottom: 0; height: 1000px;
+    background: linear-gradient(to top, rgba(6,26,22,.96) 0%, rgba(6,26,22,.85) 45%, rgba(6,26,22,0) 100%); }
+
+  /* everything readable lives inside the 3:4 grid crop: y 240 - 1680 */
+  #head { position: absolute; left: 96px; top: 300px; width: 900px; text-shadow: 0 4px 22px rgba(4,20,17,.5); }
+  #kicker { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 36px; letter-spacing: 7px; color: var(--gold); }
+  #kicker i { width: 60px; height: 5px; background: var(--gold); }
+  #big { font-family: "League Gothic", sans-serif; line-height: .84; margin-top: 18px; letter-spacing: 2px; }
+  #big .a { display: block; font-size: 250px; }
+  #big .b { display: block; font-size: 330px; color: var(--gold); }
+  #sub { margin-top: 22px; font-weight: 900; font-size: 56px; line-height: 1.12; }
+  #sub span { background: var(--gold); color: var(--emerald); padding: 0 14px; text-shadow: none; }
+
+  #thumbs { position: absolute; left: 96px; right: 96px; top: 1150px; display: flex; gap: 18px; }
+  .th { flex: 1; height: 330px; border-radius: 18px; overflow: hidden; position: relative;
+    border: 5px solid #fff; box-shadow: 0 14px 34px rgba(0,0,0,.45); }
+  .th img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .th b { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px; font-size: 28px; font-weight: 800;
+    background: linear-gradient(to top, rgba(6,26,22,.92), rgba(6,26,22,0)); text-align: center; }
+  .th:nth-child(1) { transform: rotate(-3deg); }
+  .th:nth-child(3) { transform: rotate(3deg); }
+
+  #bar { position: absolute; left: 96px; right: 96px; top: 1520px; display: flex; align-items: stretch; height: 130px; }
+  #price { background: var(--gold); color: var(--emerald); border-radius: 16px 0 0 16px; padding: 0 30px;
+    display: flex; align-items: center; font-family: "League Gothic", sans-serif; font-size: 112px; letter-spacing: 2px; }
+  #price small { font-size: 64px; margin-right: 8px; }
+  #where { flex: 1; background: rgba(11,48,41,.95); border-radius: 0 16px 16px 0; border: 3px solid var(--gold); border-left: 0;
+    padding: 0 26px; display: flex; flex-direction: column; justify-content: center; }
+  #where .n { font-family: "League Gothic", sans-serif; font-size: 62px; line-height: 1; letter-spacing: 1px; }
+  #where .s { font-weight: 700; font-size: 26px; color: rgba(255,255,255,.88); margin-top: 4px; }
+</style>
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="shade-t"></div>
+  <div id="shade-b"></div>
+
+  <div id="head">
+    <div id="kicker"><i></i>TINGKAT 29 · SHAH ALAM</div>
+    <div id="big"><span class="a">BAWAH</span><span class="b">RM300K?</span></div>
+    <div id="sub">2 bilik, <span>fully furnished</span><br>view macam ni!</div>
+  </div>
+
+  <div id="thumbs">
+    <div class="th"><img src="img/living.jpg" alt=""><b>Ruang Tamu</b></div>
+    <div class="th"><img src="img/bed1.jpg" alt=""><b>Bilik 1</b></div>
+    <div class="th"><img src="img/bed2.jpg" alt=""><b>Bilik 2</b></div>
+  </div>
+
+  <div id="bar">
+    <div id="price"><small>RM</small>295K</div>
+    <div id="where"><div class="n">MENARA U2, SEKSYEN 13</div><div class="s">Dekat MSU &amp; AEON Mall Shah Alam</div></div>
+  </div>
+</body>
+</html>
