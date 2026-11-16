@@ -1,0 +1,46 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; color: #fff;
+      font-family: "Montserrat", sans-serif; }
+    .scrim-b { position: absolute; left: 0; right: 0; bottom: 0; height: 1180px;
+      background: linear-gradient(to top, rgba(6,26,22,.92) 0%, rgba(6,26,22,.78) 38%, rgba(6,26,22,.35) 70%, rgba(6,26,22,0) 100%); }
+    .scrim-t { position: absolute; left: 0; right: 0; top: 0; height: 1100px;
+      background: linear-gradient(to bottom, rgba(6,26,22,.88) 0%, rgba(6,26,22,.62) 45%, rgba(6,26,22,0) 100%); }
+    .gold { color: #E3B866; }
+    .w { display: inline-block; }
+
+    .tag { position: absolute; left: 120px; bottom: 680px; width: 780px; padding-left: 36px; text-shadow: 0 3px 14px rgba(4,20,17,.5); }
+    .scrim-b { height: 1320px; background: linear-gradient(to top, rgba(6,26,22,.93) 0%, rgba(6,26,22,.84) 45%, rgba(6,26,22,.55) 68%, rgba(6,26,22,0) 100%); }
+    .tag .bar { position: absolute; left: 0; top: 6px; bottom: 6px; width: 10px; background: #E3B866; transform-origin: 50% 100%; }
+    .tag .kick { font-weight: 800; font-size: 34px; letter-spacing: 6px; color: #E3B866; }
+    .tag .title { font-family: "League Gothic", sans-serif; font-size: 170px; line-height: .92; letter-spacing: 2px;
+      clip-path: inset(0 100% 0 0); }
+    .tag .detail { font-weight: 800; font-size: 48px; line-height: 1.2; margin-top: 10px; }
+
+  </style>
+  <div id="root" data-composition-id="bed1" data-width="1080" data-height="1920" data-duration="2.0">
+
+    <div class="scrim-b"></div>
+    <div id="bed1-tag" class="tag">
+      <div class="bar"></div>
+      <div class="kick">BILIK 1 DARIPADA 2</div>
+      <div class="title">BILIK TIDUR</div>
+      <div class="detail"><span class="w">Master</span> <span class="w">bedroom,</span> <span class="w">ada</span> <span class="w">aircond</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = (q) => document.querySelectorAll('[data-composition-id="bed1"] ' + q);
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S('.scrim-b'), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 0);
+      tl.fromTo(S('.bar'), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "expo.out" }, 0.1);
+      tl.fromTo(S('.kick'), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.12);
+      tl.fromTo(S('.title'), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.42, ease: "expo.out" }, 0.18);
+      tl.fromTo(S('.detail .w'), { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.06 }, 0.42);
+      tl.to(S('.tag'), { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 1.80);
+
+      window.__timelines["bed1"] = tl;
+    })();
+  </script>
+</template>

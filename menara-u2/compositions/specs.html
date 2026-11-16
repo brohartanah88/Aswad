@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; color: #fff;
+      font-family: "Montserrat", sans-serif; }
+    .scrim-b { position: absolute; left: 0; right: 0; bottom: 0; height: 1180px;
+      background: linear-gradient(to top, rgba(6,26,22,.92) 0%, rgba(6,26,22,.78) 38%, rgba(6,26,22,.35) 70%, rgba(6,26,22,0) 100%); }
+    .scrim-t { position: absolute; left: 0; right: 0; top: 0; height: 1100px;
+      background: linear-gradient(to bottom, rgba(6,26,22,.88) 0%, rgba(6,26,22,.62) 45%, rgba(6,26,22,0) 100%); }
+    .gold { color: #E3B866; }
+    .w { display: inline-block; }
+
+    #sp-dim { position: absolute; inset: 0; background: rgba(6,26,22,.35); }
+    #sp-panel { position: absolute; left: 90px; right: 90px; top: 290px; padding: 44px 40px 40px;
+      background: rgba(11,48,41,.93); border-radius: 28px; border-top: 8px solid #E3B866; }
+    #sp-head { font-family: "League Gothic", sans-serif; font-size: 110px; line-height: .95; letter-spacing: 2px; }
+    #sp-sub { font-weight: 800; font-size: 36px; color: #E3B866; letter-spacing: 4px; margin-top: 4px; }
+    #sp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; }
+    .tile { background: rgba(255,255,255,.07); border-radius: 18px; padding: 22px 26px 24px; }
+    .tile .num { font-family: "League Gothic", sans-serif; font-size: 112px; line-height: .95; color: #E3B866; }
+    .tile .num .pre { font-size: 70px; margin-right: 6px; }
+    .tile .lab { font-weight: 800; font-size: 28px; letter-spacing: 1px; margin-top: 4px; }
+    #sp-foot { font-weight: 800; font-size: 36px; margin-top: 26px; }
+
+  </style>
+  <div id="root" data-composition-id="specs" data-width="1080" data-height="1920" data-duration="4.0">
+
+    <div id="sp-dim"></div>
+    <div id="sp-panel">
+      <div id="sp-head">DETAIL UNIT</div>
+      <div id="sp-sub">SERVICE RESIDENCE · LEASEHOLD</div>
+      <div id="sp-grid">
+        <div class="tile"><div class="num"><span class="pre"></span><span class="cnt" data-to="29">29</span></div><div class="lab">TINGKAT</div></div>
+        <div class="tile"><div class="num"><span class="pre"></span><span class="cnt" data-to="450">450</span></div><div class="lab">SQ FT</div></div>
+        <div class="tile"><div class="num"><span class="pre"></span><span class="cnt" data-to="2">2</span></div><div class="lab">BILIK TIDUR</div></div>
+        <div class="tile"><div class="num"><span class="pre"></span><span class="cnt" data-to="1">1</span></div><div class="lab">BILIK AIR</div></div>
+        <div class="tile"><div class="num"><span class="pre"></span><span class="cnt" data-to="1">1</span></div><div class="lab">PARKING BERBUMBUNG</div></div>
+        <div class="tile"><div class="num"><span class="pre">RM</span><span class="cnt" data-to="225">225</span></div><div class="lab">MAINTENANCE / BULAN</div></div>
+      </div>
+      <div id="sp-foot"><span class="w">Basic</span> <span class="w">unit</span> <span class="w">·</span> <span class="w">Fully</span> <span class="w">furnished</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = (q) => document.querySelectorAll('[data-composition-id="specs"] ' + q);
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S('#sp-dim'), { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+      tl.fromTo(S('#sp-panel'), { y: 1500 }, { y: 0, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo(S('#sp-head'), { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0.3);
+      tl.fromTo(S('#sp-sub'), { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.42);
+      S('.tile').forEach((el, i) => {
+        const at = 0.5 + Math.floor(i / 2) * 0.24 + (i % 2) * 0.06;
+        tl.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, at);
+        const c = el.querySelector('.cnt'); const to = +c.dataset.to; const o = { v: 0 };
+        tl.to(o, { v: to, duration: 0.55, ease: "power3.out", onUpdate: () => { c.textContent = Math.round(o.v); } }, at);
+      });
+      tl.fromTo(S('#sp-foot .w'), { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.06 }, 1.35);
+      tl.to(S('#sp-panel'), { x: -1100, duration: 0.22, ease: "power3.in" }, 3.78);
+
+      window.__timelines["specs"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,58 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; color: #fff;
+      font-family: "Montserrat", sans-serif; }
+    .scrim-b { position: absolute; left: 0; right: 0; bottom: 0; height: 1180px;
+      background: linear-gradient(to top, rgba(6,26,22,.92) 0%, rgba(6,26,22,.78) 38%, rgba(6,26,22,.35) 70%, rgba(6,26,22,0) 100%); }
+    .scrim-t { position: absolute; left: 0; right: 0; top: 0; height: 1100px;
+      background: linear-gradient(to bottom, rgba(6,26,22,.88) 0%, rgba(6,26,22,.62) 45%, rgba(6,26,22,0) 100%); }
+    .gold { color: #E3B866; }
+    .w { display: inline-block; }
+
+    #cta-ground { position: absolute; inset: 0; background: #0B3029; }
+    #cta-ground::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 600px;
+      background: linear-gradient(to top, #06201B, rgba(6,32,27,0)); }
+    #cta-block { position: absolute; left: 120px; top: 680px; width: 840px; }
+    #cta-label { font-weight: 800; font-size: 36px; letter-spacing: 7px; color: #E3B866; }
+    #cta-name { font-family: "League Gothic", sans-serif; font-size: 138px; line-height: .95; letter-spacing: 2px; margin-top: 6px; }
+    #cta-ren { font-weight: 700; font-size: 36px; color: rgba(255,255,255,.85); margin-top: 4px; }
+    #cta-phone { display: flex; align-items: center; gap: 24px; margin-top: 28px; background: #E3B866; color: #0B3029;
+      border-radius: 18px; padding: 14px 28px; width: 768px; transform-origin: 0 50%; }
+    #cta-phone .ic { width: 68px; height: 68px; flex: none; }
+    #cta-phone .no { font-family: "League Gothic", sans-serif; font-size: 104px; line-height: 1; letter-spacing: 3px; }
+    #cta-bro { margin-top: 28px; border-left: 8px solid #E3B866; padding-left: 26px; }
+    #cta-bro .q { font-weight: 900; font-size: 38px; line-height: 1.15; }
+    #cta-bro .a { font-weight: 700; font-size: 32px; line-height: 1.3; color: rgba(255,255,255,.85); margin-top: 6px; }
+
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920" data-duration="4.6">
+
+    <div id="cta-ground"></div>
+    <div id="cta-block">
+      <div id="cta-label">CALL / WHATSAPP SAYA</div>
+      <div id="cta-name" data-var-text="agentName">KHAIRUL ASWAD</div>
+      <div id="cta-ren">REN30578 · Alam Harta Realty</div>
+      <div id="cta-phone"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M42 33.5v5a3.5 3.5 0 0 1-3.8 3.5A34.6 34.6 0 0 1 6 9.8 3.5 3.5 0 0 1 9.5 6h5a3.5 3.5 0 0 1 3.5 3c.2 1.6.6 3.2 1.2 4.7a3.5 3.5 0 0 1-.8 3.7l-2.1 2.1a28 28 0 0 0 10.5 10.5l2.1-2.1a3.5 3.5 0 0 1 3.7-.8c1.5.6 3.1 1 4.7 1.2a3.5 3.5 0 0 1 3 3.5z"/></svg></div><div class="no" data-var-text="phone">012-402 3764</div></div>
+      <div id="cta-bro">
+        <div class="q">NAK JUAL / SEWA HARTANAH ANDA?</div>
+        <div class="a">Hubungi <span class="gold">Bro Hartanah</span> untuk khidmat nasihat pembelian &amp; penjualan.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = (q) => document.querySelectorAll('[data-composition-id="cta"] ' + q);
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S('#cta-ground'), { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0.05);
+      tl.fromTo(S('#cta-label'), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.6);
+      tl.fromTo(S('#cta-name'), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "expo.out" }, 0.75);
+      tl.fromTo(S('#cta-ren'), { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.05);
+      tl.fromTo(S('#cta-phone'), { scaleX: 0.2, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, 1.45);
+      tl.fromTo(S('#cta-phone .ic'), { rotation: -25 }, { rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.45)" }, 1.6);
+      tl.fromTo(S('#cta-bro'), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 2.25);
+
+      window.__timelines["cta"] = tl;
+    })();
+  </script>
+</template>

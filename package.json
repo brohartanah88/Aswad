@@ -1,0 +1,23 @@
+{
+  "name": "aswad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brohartanah88/Aswad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brohartanah88/Aswad/issues"
+  },
+  "homepage": "https://github.com/brohartanah88/Aswad#readme",
+  "devDependencies": {
+    "hyperframes": "^0.9.56"
+  }
+}
